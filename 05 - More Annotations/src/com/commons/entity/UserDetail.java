@@ -22,7 +22,6 @@ public class UserDetail {
 	@Column(name = "user_name")
 	private String userName;
 	
-	
 	@Lob
 	private String description;
 	
