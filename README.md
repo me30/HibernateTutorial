@@ -131,3 +131,7 @@ public class HibernateTestDemo {
 ```
 ![image](https://user-images.githubusercontent.com/2530543/184584825-00f0cf4e-740c-44b2-9ca5-95554cc5623c.png)
 
+# Difference Between get() and load() in Hibernate
+![image](https://user-images.githubusercontent.com/2530543/184589870-bc3489ed-966f-4fbd-92b5-f7db952ad72b.png)
+
+
