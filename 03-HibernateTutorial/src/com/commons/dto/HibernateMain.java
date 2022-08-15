@@ -12,7 +12,7 @@ public class HibernateMain {
 		UserDetail user = new UserDetail();
 		user.setUserId(1);
 		user.setUserName("first user");
-		
+
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
