@@ -14,3 +14,32 @@ If we neeed the default, non-lazy behaviour then just the @Column would have bee
 
 # @LOB
 @Lob Specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.
+
+# @Temporal
+@Temporal is a JPA annotation which can be used to store in the database table on of the following column items:
+
+> DATE (java.sql.Date)
+
+> TIME (java.sql.Time)
+
+> TIMESTAMP (java.sql.Timestamp)
+
+Generally when we declare a Date field in the class and try to store it.
+It will store as TIMESTAMP in the database.
+
+> @Temporal
+
+> private Date joinedDate;
+
+Above code will store value looks like 08-07-17 04:33:35.870000000 PM
+
+If we want to store only the DATE in the database,
+We can use/define TemporalType.
+
+> @Temporal(TemporalType.DATE)
+
+> private Date joinedDate;
+
+This time, it would store 08-07-17 in database
+
+There are some other attributes as well as @Temporal which can be used based on the requirement.
