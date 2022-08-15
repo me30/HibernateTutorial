@@ -48,6 +48,8 @@ There are some other attributes as well as @Temporal which can be used based on 
 
 We have seen that every entity object are passed to three states of the object before saving and updating the row in the database table as per as given in the following picture.
 
+![image](https://user-images.githubusercontent.com/2530543/184584719-9a7ecb8e-b899-4f6b-8bbb-bc18539da88c.png)
+
 1. Transient State:
 
 A New instance of  a persistent class which is not associated with a Session, has no representation in the database and no identifier value is considered transient by Hibernate:
@@ -116,3 +118,4 @@ public class HibernateTestDemo {
  }
 }
 ```
+![image](https://user-images.githubusercontent.com/2530543/184584825-00f0cf4e-740c-44b2-9ca5-95554cc5623c.png)
