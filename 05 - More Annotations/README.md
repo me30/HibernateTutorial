@@ -1,4 +1,4 @@
-##Java Persistence / JPA: @Column vs @Basic
+# Java Persistence / JPA: @Column vs @Basic
 
 @Basic signifies that an attribute is to be persisted and a standard mapping is to be used. It has parameters which allow you to specify whether the attribute is to be lazily loaded and whether it's nullable.
 
@@ -12,5 +12,5 @@ So if we wanted a lazy loading of an attribute and to specify a column name we c
 @Column(name="WIBBLE")
 If we neeed the default, non-lazy behaviour then just the @Column would have been sufficient.
 
-##@LOB
+# @LOB
 @Lob Specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.
