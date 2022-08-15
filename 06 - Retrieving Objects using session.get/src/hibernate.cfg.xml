@@ -34,8 +34,6 @@
         
         <!--  Names the annotated entity classes -->
         <mapping class="com.commons.entity.UserDetail"/>
-   
-        
     </session-factory>
 
 </hibernate-configuration>
