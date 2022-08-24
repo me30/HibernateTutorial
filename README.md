@@ -6,8 +6,246 @@ https://www.youtube.com/watch?v=Yv2xctJxE-w&list=PL4AFF701184976B25&index=1
 Download links:
 https://sourceforge.net/projects/hibernate/files/hibernate3/3.6.10.Final/
 
+Install Mysql:
+https://www.youtube.com/watch?v=GIRcpjg-3Eg&ab_channel=edureka%21
 
 ![Desktop-screenshot](https://user-images.githubusercontent.com/2530543/184543962-813b7744-695a-4f1b-80ff-2a61b6c94e9d.png)
+
+# Hibernate :
+- Hibernate is a high-performance Object/Relational persistence and query service.
+- Hibernate not only takes care of the mapping from Java classes to database tables (and from Java data types to SQL data types), but also provides data query and retrieval facilities.
+- Hibernate is a Java framework that simplifies the development of Java application to interact with the database. 
+- It is an open source, lightweight, ORM (Object Relational Mapping) tool. Hibernate implements the specifications of JPA (Java Persistence API) for data persistence.
+
+# ORM Tool
+
+- An ORM tool simplifies the data creation, data manipulation and data access. It is a programming technique that maps the object to the data stored in the database.
+
+- The ORM tool internally uses the JDBC API to interact with the database.
+
+![image](https://user-images.githubusercontent.com/2530543/186497738-902a4cf0-6d9b-4701-86f6-dbf6dfe1fe93.png)
+
+# What is JPA?
+Java Persistence API (JPA) is a Java specification that provides certain functionality and standard to ORM tools. The javax.persistence package contains the JPA classes and interfaces.
+
+# Advantages of Hibernate Framework
+
+1) Open Source and Lightweight
+Hibernate framework is open source under the LGPL license and lightweight.
+
+2) Fast Performance
+The performance of hibernate framework is fast because cache is internally used in hibernate framework. There are two types of cache in hibernate framework first level cache and second level cache. First level cache is enabled by default.
+
+3) Database Independent Query
+HQL (Hibernate Query Language) is the object-oriented version of SQL. It generates the database independent queries. So you don't need to write database specific queries. Before Hibernate, if database is changed for the project, we need to change the SQL query as well that leads to the maintenance problem.
+
+4) Automatic Table Creation
+Hibernate framework provides the facility to create the tables of the database automatically. So there is no need to create tables in the database manually.
+
+5) Simplifies Complex Join
+Fetching data from multiple tables is easy in hibernate framework.
+
+6) Provides Query Statistics and Database Status
+Hibernate supports Query cache and provide statistics about query and database status.
+
+# Hibernate Architecture
+
+Hibernate has a layered architecture which helps the user to operate without having to know the underlying APIs. 
+
+Hibernate makes use of the database and configuration data to provide persistence services (and persistent objects) to the application.
+
+The Hibernate architecture includes many objects such as persistent object, session factory, transaction factory, connection factory, session, transaction etc.
+
+## The Hibernate architecture is categorized in four layers.
+1) Java application layer
+2) Hibernate framework layer
+3) Backhand api layer
+4) Database layer
+
+## Let's see the diagram of hibernate architecture:
+
+![image](https://user-images.githubusercontent.com/2530543/186500865-34a24ebf-6759-41dd-9b94-460e9c6d0c48.png)
+
+## The high level architecture of Hibernate with mapping file and configuration file.
+
+![image](https://user-images.githubusercontent.com/2530543/186501035-4c592140-bf5d-4c57-af14-e560bfc9a916.png)
+
+Hibernate framework uses many objects such as session factory, session, transaction etc. alongwith existing Java API such as JDBC (Java Database Connectivity), JTA (Java Transaction API) and JNDI (Java Naming Directory Interface).
+
+JDBC provides a rudimentary level of abstraction of functionality common to relational databases, allowing almost any database with a JDBC driver to be supported by Hibernate. 
+
+JNDI and JTA allow Hibernate to be integrated with J2EE application servers.
+
+## Elements of Hibernate Architecture
+
+For creating the first hibernate application, we must know the elements of Hibernate architecture. They are as follows:
+
+#### Configuration Object
+
+- The Configuration object is the first Hibernate object you create in any Hibernate application. 
+
+- It is usually created only once during application initialization. 
+
+- It represents a configuration or properties file required by the Hibernate.
+
+- The Configuration object provides two keys components −
+
+	- Database Connection − This is handled through one or more configuration files supported by Hibernate. These files are hibernate.properties and hibernate.cfg.xml.
+
+	- Class Mapping Setup − This component creates the connection between the Java classes and database tables.
+ 
+#### SessionFactory (org.hibernate.SessionFactory)
+
+- Configuration object is used to create a SessionFactory which in turn configures Hibernate for the application using the supplied configuration file and allows for a Session to be instantiated. 
+
+- The SessionFactory is a thread safe object and used by all the threads of an application.
+
+- The SessionFactory is a heavyweight object; it is usually created during application start up and kept for later use. 
+
+- You would need one SessionFactory per database using a separate configuration file. So, if you are using multiple databases, then you would have to create multiple SessionFactory objects.
+
+- The org.hibernate.SessionFactory interface provides factory method to get the object of Session.
+
+#### Session (org.hibernate.Session)
+
+- A Session is used to get a physical connection with a database. 
+
+- The Session object is lightweight and designed to be instantiated each time an interaction is needed with the database. 
+
+- Persistent objects are saved and retrieved through a Session object. It is a short-lived object and wraps the JDBC connection. 
+
+- The session objects should not be kept open for a long time because they are not usually thread safe and they should be created and destroyed them as needed.
+
+- The session object provides an interface between the application and data stored in the database. 
+
+- It is factory of Transaction, Query and Criteria. 
+
+- It holds a first-level cache (mandatory) of data. 
+
+- The org.hibernate.Session interface provides methods to insert, update and delete the object. 
+
+- It also provides factory methods for Transaction, Query and Criteria.
+
+- The session objects should not be kept open for a long time because they are not usually thread safe and they should be created and destroyed them as needed. The main function of the Session is to offer, create, read, and delete operations for instances of mapped entity classes.
+
+- Instances may exist in one of the following three states at a given point in time:
+
+  1) transient − A new instance of a persistent class, which is not associated with a Session and has no representation in the database and no identifier value is considered transient by Hibernate.
+
+  2) persistent − You can make a transient instance persistent by associating it with a Session. A persistent instance has a representation in the database, an identifier value and is associated with a Session.
+
+  3) detached − Once we close the Hibernate Session, the persistent instance will become a detached instance.
+
+#### Transaction
+
+- A Transaction represents a unit of work with the database and most of the RDBMS supports transaction functionality. 
+
+- Transactions in Hibernate are handled by an underlying transaction manager and transaction (from JDBC or JTA).
+
+- This is an optional object and Hibernate applications may choose not to use this interface, instead managing transactions in their own application code.
+
+- The transaction object specifies the atomic unit of work. 
+
+- It is optional. 
+
+- The org.hibernate.Transaction interface provides methods for transaction management.
+
+```
+Transaction transObj = null;
+Session sessionObj = null;
+try {
+    SessionFactory sf = new Configuration().configure().buildSessionFactory();
+    sessionObj = sf.openSession();
+    transObj = sessionObj.beginTransaction();
+ 
+    //Perform Some Operation Here
+    transObj.commit();
+} catch (HibernateException exObj) {
+    if(transObj!=null){
+        transObj.rollback();
+    }
+    exObj.printStackTrace(); 
+} finally {
+    sessionObj.close(); 
+}
+
+```
+
+#### Query Object
+
+- Query objects use SQL or Hibernate Query Language (HQL) string to retrieve data from the database and create objects. 
+
+- A Query instance is used to bind query parameters, limit the number of results returned by the query, and finally to execute the query.
+
+```
+String hql = "FROM com.hibernatebook.criteria.Employee";
+Query query = session.createQuery(hql);
+List results = query.list();
+
+```
+
+#### Criteria Object
+
+- Criteria objects are used to create and execute object oriented criteria queries to retrieve objects.
+
+```
+Criteria cr = session.createCriteria(Employee.class);
+List results = cr.list();
+```
+
+#### ConnectionProvider (org.hibernate.connection.ConnectionProvider)
+- (Optional) A factory for, and pool of, JDBC connections. 
+
+- It abstracts the application from underlying javax.sql.DataSource or java.sql.DriverManager. 
+
+- It is not exposed to application, but it can be extended and/or implemented by the developer.
+
+
+- It is a factory of JDBC connections. 
+
+- It abstracts the application from DriverManager or DataSource. 
+
+- It is optional.
+
+```
+public void testUserProvidedConnection() throws Exception {
+	ConnectionProvider dcp = new DriverManagerConnectionProvider();
+	dcp.configure( Environment.getProperties() );
+	Session s = getSessions().openSession( dcp.getConnection() );
+	Transaction tx = s.beginTransaction();
+	s.find("from Fo");
+	tx.commit();
+	Connection c = s.disconnect();
+	assertTrue( c!=null );
+	s.reconnect(c);
+	tx = s.beginTransaction();
+	s.find("from Fo");
+	tx.commit();
+	assertTrue( s.close()==c );
+	c.close();
+}
+```
+
+#### TransactionFactory (org.hibernate.TransactionFactory)
+ - (Optional) A factory for org.hibernate.Transaction instances. 
+ 
+ - It is not exposed to the application, but it can be extended and/or implemented by the developer.
+
+- It is a factory of Transaction. 
+
+# Hibernate - Configuration
+
+- The list of important properties, you will be required to configure for a databases in a standalone situation:
+
+![image](https://user-images.githubusercontent.com/2530543/186509016-0cdda58a-2975-43fd-a7e7-e59b4cd2b38b.png)
+
+- If you are using a database along with an application server and JNDI, then you would have to configure the following properties:
+
+![image](https://user-images.githubusercontent.com/2530543/186509530-d2a9bab9-7a88-495c-8c87-811ca02928f1.png)
+
+- List of various important databases dialect property type:
+
+![image](https://user-images.githubusercontent.com/2530543/186509748-74f57a08-4774-4616-90ee-7c9e358874e7.png)
 
 # Java Persistence / JPA: @Column vs @Basic
 
