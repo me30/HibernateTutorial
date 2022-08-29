@@ -487,3 +487,71 @@ public class Student {
 
 If not strategy is specified then AUTO is assumed
 
+# @ElementCollection 
+
+In SQL, A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+
+In Hibernate Annotation, @ElementCollection is the feature which gets the columns values from another table without mapping two tables. 
+
+We have taken two entity student and college. In college entity, we will fetch students without mapping student and college entity. 
+
+@CollectionTable will join the two tables for the given primary and foreign key.
+
+
+# @JoinTable
+
+When a join table is used in mapping a relationship with an embeddable class on the owning side of the relationship, the containing entity rather than the embeddable class is considered the owner of the relationship.
+
+If the JoinTable annotation is missing, the default values of the annotation elements apply. The name of the join table is assumed to be the table names of the associated primary tables concatenated together (owning side first) using an underscore.
+
+
+# Difference between @GeneratedValue and @GenericGenerator [Ref : https://stackoverflow.com/questions/18205574/difference-between-generatedvalue-and-genericgenerator ]
+
+@GeneratedValue:
+
+The @GeneratedValue annotation denotes that a value for a column, which must be annotated with @Id is generated. The elements strategy and generator on the annotation describe how the generated value is obtained.
+
+There are four possible values for the strategy element on the @GeneratedValue annotation: IDENTITY, AUTO, TABLE and SEQUENCE.
+
+The generator element of the @GeneratedValue annotation denotes the name of the primary key generator.
+
+generates identifiers of type long, short or int that are unique only when no other process is inserting data into the same table. Do not use in a cluster.
+
+@GenericGenerator:
+
+@GenericGenerator is a hibernate annotation used to denote a custom generator, which can be a class or shortcut to a generator supplied by Hibernate. increment is a shortcut to a Hibernate generator that
+
+uses a hi/lo algorithm to efficiently generate identifiers of type long, short or int, given a table and column (by default hibernate_unique_key and next_hi respectively) as a source of hi values. The hi/lo algorithm generates identifiers that are unique only for a particular database.
+
+More in details for understanding:- 
+
+relationships between the Hibernate primary key generation strategies and specific generator respectively, as specified in org.hibernate.id.IdentifierGeneratorFactory
+
+	static {
+	    GENERATORS.put("uuid", UUIDHexGenerator.class);     // "deprecated" for new use
+	    GENERATORS.put("hilo", TableHiLoGenerator.class);   // removed in Hibernate 5
+	    GENERATORS.put("assigned", Assigned.class);
+	    GENERATORS.put("identity", IdentityGenerator.class);
+	    GENERATORS.put("select", SelectGenerator.class);
+	    GENERATORS.put("sequence", SequenceGenerator.class);
+	    GENERATORS.put("seqhilo", SequenceHiLoGenerator.class);
+	    GENERATORS.put("increment", IncrementGenerator.class);
+	    GENERATORS.put("foreign", ForeignGenerator.class);
+	    GENERATORS.put("guid", GUIDGenerator.class);
+	    GENERATORS.put("uuid.hex", UUIDHexGenerator.class); // uuid.hex is deprecated
+	    GENERATORS.put("sequence-identity", SequenceIdentityGenerator.class);
+	}
+
+
+In Hibernate 4.3 I've found org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory class with 3 more strategies:
+
+    register("uuid2", UUIDGenerator.class);
+    register("enhanced-sequence", SequenceStyleGenerator.class);
+    register("enhanced-table", TableGenerator.class);
+    
+The above fifteen strategies, plus native, are sixteen generation strategies supported in Hibernate by default.
+
+Example with native:
+
+@GeneratedValue(generator = "nativeGenerator")
+@GenericGenerator(name = "nativeGenerator", strategy = "native")
