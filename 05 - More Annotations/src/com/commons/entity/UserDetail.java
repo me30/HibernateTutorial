@@ -2,8 +2,10 @@ package com.commons.entity;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -28,7 +30,7 @@ public class UserDetail {
 	@Temporal(TemporalType.DATE)
 	private Date joindate;
 	
-	@Transient
+	@Basic(optional = true, fetch = FetchType.LAZY)
 	private String testing;
 
 	public int getUserId() {

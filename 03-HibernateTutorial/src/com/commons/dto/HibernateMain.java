@@ -18,5 +18,7 @@ public class HibernateMain {
 		session.beginTransaction();
 		session.save(user);
 		session.getTransaction().commit();
+		session.close();
+		System.out.println(user.getUserId());
 	}
 }

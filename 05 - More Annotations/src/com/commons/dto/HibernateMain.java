@@ -16,7 +16,7 @@ public class HibernateMain {
 		user.setUserName("second user");
 		user.setDescription("first user description");
 		user.setJoindate(new Date());
-		user.setTesting("testing");
+		//user.setTesting("testing");
 		
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session session = sf.openSession();
